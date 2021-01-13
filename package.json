@@ -1,5 +1,5 @@
 {
-  "homepage": "https://mourabitiziyad.github.io/algorithm-visualiser",
+  "homepage": "https://mourabitiziyad.github.io/algorithm-viusaliser",
   "name": "algorithm-visualiser",
   "version": "0.1.0",
   "private": true,
@@ -10,6 +10,7 @@
     "bootstrap": "^4.5.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "reactstrap": "^8.8.1",
     "web-vitals": "^0.2.4"
