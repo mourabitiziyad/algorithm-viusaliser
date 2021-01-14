@@ -9,53 +9,56 @@ const Array = () => {
 
     const [length, setLength] = useState(0)
     const [array, setArray] = useState([])
+    const [arr, setArr] = useState([])
 
     const appStyleArray = {
         textAlign: 'center',
         marginTop: '10px',
-        // display: 'block'
-      }
-    
-    const arraybar = {
-        backgroundColor: 'yellow',
-        display: 'inline',
-        margin: '0 1px',
-        border: '1px solid'
     }
+
     const randomNumber = (min, max) => {
         return Math.floor(Math.random() * (max - min + 1) + min );
     }
     
     const shape = array.map((value, index) => (
-        <>
-        <div style={arraybar} key={index} style={{height: `${value*2}px`, width: '20px' }}>{value}</div>
-        </>
+        <p style={{
+            display: 'inline-block', 
+            backgroundColor: 'rgba(0,136,169, 1)',
+            margin: '1px',
+            padding: '20px 1px',
+            boxSizing: 'border-box',
+            height: `${value*1.3}vh`,
+            width: `${((document.getElementById('test').offsetWidth/length)/1.5)}px` }} key={index}>&nbsp;</p>
     ))
+
+    // For sizing, play with width and padding and measurement units.
     
     useEffect(() => {
-        for (let i=0; i < length/4; i++ ) {
-            array.push(randomNumber(1, length/2))
+        setArr([])
+        for (let i=0; i < length; i++ ) {
+            arr.push(randomNumber(1, (length)))
         }
-        console.log(length)
-    }, [length, array])
+        setArray(arr)
+    }, [length])
 
     const handleSlider = (event) => {
-        if(event.target.value !== length) {
-            // setArray([])
-            setLength(event.target.value)
-        }
+        event.preventDefault()
+        setLength(event.target.value)
     }
     return (
         <>
         <div style={appStyleArray}>
             <FormGroup>
-                <p style={{margin: "10px"}}><Label for="range">Select Array Length: {Math.ceil(length/4)}</Label></p>
-                <Input style={{width: "40%"}} type="range" name="range" id="range" defaultValue={0} onChange={handleSlider}/>
+                <p style={{margin: "10px"}}><Label for="range">Select Array Length: {Math.ceil(length)}</Label></p>
+                <Input style={{width: "40%"}} type="range" name="range" id="range" onChange={handleSlider}/>
             </FormGroup>
         </div>
-        <div>
+        <div id="test" style={appStyleArray}>
             {shape}
+            {/* {console.log(((document.getElementById('test').offsetWidth/length)/4)-1)} */}
         </div>
+        
+        
         
         </>
         
