@@ -16,6 +16,8 @@ const Array = () => {
     const [arr, setArr] = useState([])
     const [stopped, setStopped] = useState(false)
 
+    const [troll, setTroll] = useState("Selection Sort")
+
     const appStyleArray = {
         textAlign: 'center',
         marginTop: '10px',
@@ -33,7 +35,8 @@ const Array = () => {
             padding: '20px 1px',
             boxSizing: 'border-box',
             height: `${value*1.3}vh`,
-            width: `${((document.getElementById('test').offsetWidth/length)/1.5)}px` }} key={index}>&nbsp;</p>
+            width: `${Math.floor(document.getElementById('test').offsetWidth) / (length * 3)     }px` }} key={index}>&nbsp;</p>
+            // width: `${((document.getElementById('test').offsetWidth/length)/1.5)}px` }} key={index}>&nbsp;</p>
     ))
 
     // For sizing, play with width and padding and measurement units.
@@ -45,7 +48,7 @@ const Array = () => {
         }
         setArray(arr)
     }, [length])
-
+    
     const handleSlider = (event) => {
         event.preventDefault()
         setLength(event.target.value)
@@ -56,40 +59,41 @@ const Array = () => {
         setSpeed(event.target.value)
     }
 
-    const handleChange = () => {
-        for(let i=0; i< array.length; i++){
-            setTimeout(() => {
-                const bar = document.getElementById(i)
-                bar.style.backgroundColor = 'white'
-            }, i * 80);
-        }
+    const handleBubble = async () => {
+        setStopped(true)
+        await bubbleSort(array, parseInt(speed)*4 +1)
+        setStopped(false)
     }
-
-    const handleBubble = () => {
-        setStopped(!stopped)
-        bubbleSort(array, parseInt(speed)+1)
+    
+    const handleStop = () => {
+        window.location.reload(stopped)
         setStopped(!stopped)
     }
 
     return (
         <>
+        
             <div style={appStyleArray}>
                 <FormGroup>
                     <p style={{margin: "10px"}}><Label for="range">Select Array Length: {Math.ceil(length)}</Label></p>
                     <Input disabled={stopped} style={{width: "40%"}} type="range" name="range" id="range" onChange={handleSlider}/>
                 </FormGroup>
                 <FormGroup>
-                    <p style={{margin: "10px"}}><Label for="range">Select Speed: {Math.ceil(speed)}</Label></p>
+                    <p style={{margin: "10px"}}><Label for="range">Select Delay (Less is Faster): {Math.ceil(speed)}ms</Label></p>
                     <Input disabled={stopped} style={{width: "40%"}} type="range" name="speed" id="speed" onChange={handleSpeed}/>
                 </FormGroup>
-                <a className="cta" onClick={handleBubble}><button disabled={stopped}>Bubble Sort</button></a>
+                {stopped? <a className="cta" onClick={handleStop}><button>Stop</button></a> : <a className="cta" onClick={handleBubble}><button>Bubble Sort</button></a>}
                 {/* <a className="cta" onClick={() => selectionSort(array, parseInt(speed)+1, stopped)}><button >Selection Sort</button></a> */}
-                <a className="cta" onClick={handleChange}><button disabled={stopped}>Selection Sort</button></a>
+                {!stopped? <a className="cta" onClick={() => setTroll("malk zrban")}><button disabled={stopped}>{troll}</button></a> : null}
             </div>
 
             <div id="test" style={appStyleArray}>
                 {shape}
             </div>
+            <br></br>
+            <br></br>
+            <br></br>
+
         </>
         
     );

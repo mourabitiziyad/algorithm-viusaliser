@@ -18,6 +18,7 @@ li, a, button, p {
 
 header {
     display: flex;
+    box-sizing: content-box;
     justify-content: space-between;
     align-items: center;
     padding: 30px 10%;
@@ -61,4 +62,5 @@ button:hover, .bar:hover {
 
 .cta {
     margin-right: 5px;
+    /* margin-top: 5px; */
 }
