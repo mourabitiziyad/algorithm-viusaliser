@@ -8,11 +8,13 @@ import { bubbleSort } from '../algorithms/sorting/bubbleSort';
 import { selectionSort } from '../algorithms/sorting/selectionSort';
 
 const Array = () => {
-    const [selectionSortAnimation] = useState([])
-    const [bubbleSortAnimation] = useState([])
-    const [length, setLength] = useState(0)
+
+    
+    const [length, setLength] = useState(50)
+    const [speed, setSpeed] = useState(50)
     const [array, setArray] = useState([])
     const [arr, setArr] = useState([])
+    const [stopped, setStopped] = useState(false)
 
     const appStyleArray = {
         textAlign: 'center',
@@ -24,7 +26,7 @@ const Array = () => {
     }
     
     const shape = array.map((value, index) => (
-        <p  style={{
+        <p  id={index} style={{
             display: 'inline-block', 
             backgroundColor: 'rgba(0,136,169, 1)',
             margin: '1px',
@@ -48,20 +50,46 @@ const Array = () => {
         event.preventDefault()
         setLength(event.target.value)
     }
+    
+    const handleSpeed = (event) => {
+        event.preventDefault()
+        setSpeed(event.target.value)
+    }
+
+    const handleChange = () => {
+        for(let i=0; i< array.length; i++){
+            setTimeout(() => {
+                const bar = document.getElementById(i)
+                bar.style.backgroundColor = 'white'
+            }, i * 80);
+        }
+    }
+
+    const handleBubble = () => {
+        setStopped(!stopped)
+        bubbleSort(array, parseInt(speed)+1)
+        setStopped(!stopped)
+    }
+
     return (
         <>
-        <div style={appStyleArray}>
-            <FormGroup>
-                <p style={{margin: "10px"}}><Label for="range">Select Array Length: {Math.ceil(length)}</Label></p>
-                <Input style={{width: "40%"}} type="range" name="range" id="range" onChange={handleSlider}/>
-            </FormGroup>
-            <a className="cta" onClick={() => bubbleSort(array, {bubbleSortAnimation})}><button>Bubble Sort</button></a>
-            <a className="cta" onClick={() => selectionSort(array, {selectionSortAnimation})}><button >Selection Sort</button></a>
-        </div>
-        <div id="test" style={appStyleArray}>
-            {shape}
-            {/* {console.log(((document.getElementById('test').offsetWidth/length)/4)-1)} */}
-        </div>
+            <div style={appStyleArray}>
+                <FormGroup>
+                    <p style={{margin: "10px"}}><Label for="range">Select Array Length: {Math.ceil(length)}</Label></p>
+                    <Input disabled={stopped} style={{width: "40%"}} type="range" name="range" id="range" onChange={handleSlider}/>
+                </FormGroup>
+                <FormGroup>
+                    <p style={{margin: "10px"}}><Label for="range">Select Speed: {Math.ceil(speed)}</Label></p>
+                    <Input disabled={stopped} style={{width: "40%"}} type="range" name="speed" id="speed" onChange={handleSpeed}/>
+                </FormGroup>
+                <a className="cta" onClick={handleBubble}><button disabled={stopped}>Bubble Sort</button></a>
+                {/* <a className="cta" onClick={() => selectionSort(array, parseInt(speed)+1, stopped)}><button >Selection Sort</button></a> */}
+                <a className="cta" onClick={handleChange}><button disabled={stopped}>Selection Sort</button></a>
+            </div>
+
+            <div id="test" style={appStyleArray}>
+                {shape}
+            </div>
         </>
         
     );
