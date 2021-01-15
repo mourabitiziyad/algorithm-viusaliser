@@ -50,9 +50,15 @@ button {
     border: none;
     border-radius: 50px;
     cursor: pointer;
+    outline: none;
     transition: all 0.3s ease 0s;
 }
 
-button:hover {
+button:hover, .bar:hover {
     background-color: rgba(0,136,169, 0.8);
+}
+
+
+.cta {
+    margin-right: 5px;
 }

@@ -4,9 +4,12 @@ import {
     Label,
     Input
  } from 'reactstrap';
+import { bubbleSort } from '../algorithms/sorting/bubbleSort';
+import { selectionSort } from '../algorithms/sorting/selectionSort';
 
 const Array = () => {
-
+    const [selectionSortAnimation] = useState([])
+    const [bubbleSortAnimation] = useState([])
     const [length, setLength] = useState(0)
     const [array, setArray] = useState([])
     const [arr, setArr] = useState([])
@@ -21,7 +24,7 @@ const Array = () => {
     }
     
     const shape = array.map((value, index) => (
-        <p style={{
+        <p  style={{
             display: 'inline-block', 
             backgroundColor: 'rgba(0,136,169, 1)',
             margin: '1px',
@@ -52,14 +55,13 @@ const Array = () => {
                 <p style={{margin: "10px"}}><Label for="range">Select Array Length: {Math.ceil(length)}</Label></p>
                 <Input style={{width: "40%"}} type="range" name="range" id="range" onChange={handleSlider}/>
             </FormGroup>
+            <a className="cta" onClick={() => bubbleSort(array, {bubbleSortAnimation})}><button>Bubble Sort</button></a>
+            <a className="cta" onClick={() => selectionSort(array, {selectionSortAnimation})}><button >Selection Sort</button></a>
         </div>
         <div id="test" style={appStyleArray}>
             {shape}
             {/* {console.log(((document.getElementById('test').offsetWidth/length)/4)-1)} */}
         </div>
-        
-        
-        
         </>
         
     );
