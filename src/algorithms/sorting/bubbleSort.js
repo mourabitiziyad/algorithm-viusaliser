@@ -1,5 +1,15 @@
 export const bubbleSort = async (arr, speed) => {
+    
     if(JSON.stringify(arr.slice().sort(function(a, b){return a - b})) === JSON.stringify(arr)) {
+
+        for (let i=0; i< arr.length; i++) document.getElementById(i).style.backgroundColor = 'white'
+        await timeout(150) // 150 ms
+        for (let i=0; i< arr.length; i++) document.getElementById(i).style.backgroundColor = 'rgba(0,136,169, 1)'
+        await timeout(150) // 150 ms
+        for (let i=0; i< arr.length; i++) document.getElementById(i).style.backgroundColor = 'white'
+        await timeout(150) // 150 ms
+        for (let i=0; i< arr.length; i++) document.getElementById(i).style.backgroundColor = 'rgba(0,136,169, 1)'
+
         return
     }
     for ( let i = 0; i < arr.length - 1; i++) {

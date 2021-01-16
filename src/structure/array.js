@@ -28,7 +28,7 @@ const Array = () => {
     }
     
     const shape = array.map((value, index) => (
-        <p  id={index} style={{
+        <p  classname="whole-array" id={index} style={{
             display: 'inline-block', 
             backgroundColor: 'rgba(0,136,169, 1)',
             margin: '1px',
