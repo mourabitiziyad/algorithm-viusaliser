@@ -80,6 +80,9 @@ const Array = () => {
         <>
         
             <div style={appStyleArray}>
+                <p>Note: Bubble Sort and Selection Sort now both working</p>
+                <br>
+                </br>
                 <FormGroup>
                     <p style={{margin: "10px"}}><Label for="range">Select Array Length: {Math.ceil(length)}</Label></p>
                     <Input disabled={stopped} style={{width: "40%"}} type="range" name="range" id="range" onChange={handleSlider}/>
@@ -90,7 +93,7 @@ const Array = () => {
                 </FormGroup>
                 {stopped? <a className="cta" onClick={handleStop}><button>Stop</button></a> : <a className="cta" onClick={handleBubble}><button>Bubble Sort</button></a>}
                 {!stopped? <a className="cta" onClick={handleSelection}><button>Selection Sort</button></a> : null}
-                {!stopped? <a className="cta" onClick={() => setTroll("malk zrban")}><button disabled={stopped}>{troll}</button></a> : null}
+                {/* {!stopped? <a className="cta" onClick={() => setTroll("malk zrban")}><button disabled={stopped}>{troll}</button></a> : null} */}
             </div>
 
             <div id="test" style={appStyleArray}>
