@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/algorithm-viusaliser/static/css/main.79fd0372.chunk.css",
-    "main.js": "/algorithm-viusaliser/static/js/main.59323316.chunk.js",
-    "main.js.map": "/algorithm-viusaliser/static/js/main.59323316.chunk.js.map",
+    "main.js": "/algorithm-viusaliser/static/js/main.5389142d.chunk.js",
+    "main.js.map": "/algorithm-viusaliser/static/js/main.5389142d.chunk.js.map",
     "runtime-main.js": "/algorithm-viusaliser/static/js/runtime-main.2d980d22.js",
     "runtime-main.js.map": "/algorithm-viusaliser/static/js/runtime-main.2d980d22.js.map",
-    "static/js/2.b28d2d07.chunk.js": "/algorithm-viusaliser/static/js/2.b28d2d07.chunk.js",
-    "static/js/2.b28d2d07.chunk.js.map": "/algorithm-viusaliser/static/js/2.b28d2d07.chunk.js.map",
+    "static/js/2.bdc665c2.chunk.js": "/algorithm-viusaliser/static/js/2.bdc665c2.chunk.js",
+    "static/js/2.bdc665c2.chunk.js.map": "/algorithm-viusaliser/static/js/2.bdc665c2.chunk.js.map",
     "index.html": "/algorithm-viusaliser/index.html",
     "static/css/main.79fd0372.chunk.css.map": "/algorithm-viusaliser/static/css/main.79fd0372.chunk.css.map",
-    "static/js/2.b28d2d07.chunk.js.LICENSE.txt": "/algorithm-viusaliser/static/js/2.b28d2d07.chunk.js.LICENSE.txt"
+    "static/js/2.bdc665c2.chunk.js.LICENSE.txt": "/algorithm-viusaliser/static/js/2.bdc665c2.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.2d980d22.js",
-    "static/js/2.b28d2d07.chunk.js",
+    "static/js/2.bdc665c2.chunk.js",
     "static/css/main.79fd0372.chunk.css",
-    "static/js/main.59323316.chunk.js"
+    "static/js/main.5389142d.chunk.js"
   ]
 }
