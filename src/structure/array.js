@@ -65,6 +65,12 @@ const Array = () => {
         setStopped(false)
     }
     
+    const handleSelection = async () => {
+        setStopped(true)
+        await selectionSort(array, parseInt(speed)*4 +1)
+        setStopped(false)
+    }
+
     const handleStop = () => {
         window.location.reload(stopped)
         setStopped(!stopped)
@@ -83,7 +89,7 @@ const Array = () => {
                     <Input disabled={stopped} style={{width: "40%"}} type="range" name="speed" id="speed" onChange={handleSpeed}/>
                 </FormGroup>
                 {stopped? <a className="cta" onClick={handleStop}><button>Stop</button></a> : <a className="cta" onClick={handleBubble}><button>Bubble Sort</button></a>}
-                {/* <a className="cta" onClick={() => selectionSort(array, parseInt(speed)+1, stopped)}><button >Selection Sort</button></a> */}
+                {!stopped? <a className="cta" onClick={handleSelection}><button>Selection Sort</button></a> : null}
                 {!stopped? <a className="cta" onClick={() => setTroll("malk zrban")}><button disabled={stopped}>{troll}</button></a> : null}
             </div>
 
