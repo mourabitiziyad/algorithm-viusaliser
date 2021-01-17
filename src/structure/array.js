@@ -6,6 +6,7 @@ import {
  } from 'reactstrap';
 import { bubbleSort } from '../algorithms/sorting/bubbleSort';
 import { selectionSort } from '../algorithms/sorting/selectionSort';
+import { mergeSort } from '../algorithms/sorting/mergeSort';
 
 const Array = () => {
 
@@ -70,6 +71,12 @@ const Array = () => {
         await selectionSort(array, parseInt(speed)*4 +1)
         setStopped(false)
     }
+    
+    const handleMerge = async () => {
+        setStopped(true)
+        await mergeSort(array, parseInt(speed)*4 +1)
+        setStopped(false)
+    }
 
     const handleStop = () => {
         window.location.reload(stopped)
@@ -93,6 +100,7 @@ const Array = () => {
                 </FormGroup>
                 {stopped? <a className="cta" onClick={handleStop}><button>Stop</button></a> : <a className="cta" onClick={handleBubble}><button>Bubble Sort</button></a>}
                 {!stopped? <a className="cta" onClick={handleSelection}><button>Selection Sort</button></a> : null}
+                {!stopped? <a className="cta" onClick={handleMerge}><button>Merge Sort</button></a> : null}
                 {/* {!stopped? <a className="cta" onClick={() => setTroll("malk zrban")}><button disabled={stopped}>{troll}</button></a> : null} */}
             </div>
 
